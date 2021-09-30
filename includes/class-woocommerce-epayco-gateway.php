@@ -1,4 +1,6 @@
 <?php
+
+
 class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
 {
     private $pluginVersion = '4.9.1';
