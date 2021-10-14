@@ -237,7 +237,7 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
           			$message = '<span class="animated-points">Loading payment methods</span>
                                     <br>
                                         <small class="epayco-subtitle">If they are not charged automatically, click the  "Pay with ePayco" button</small>';
-                    $button ='https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color-Ingles.png';
+                    $button ='<img src="https://multimedia.epayco.co/epayco-landing/btns/Boton-epayco-color-Ingles.png">';
           		}
           		$test_mode = $this->epayco_gateway_testmode == "yes" ? "true" : "false";
           	
