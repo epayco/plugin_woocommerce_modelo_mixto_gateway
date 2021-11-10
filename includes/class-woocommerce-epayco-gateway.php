@@ -466,7 +466,7 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                         </script>
                     </form>
                         </div>       
-                ',$this->epayco_gateway_publickey,$test_mode,$order->get_total(),$tax,$base_tax, $descripcion, $descripcion, $currency, $order->get_id(), $order->get_id(), $basedCountry, $external_type, $redirect_url,$confirm_url,
+                ',$this->epayco_gateway_publickey,$test_mode,$order->get_total(),$tax,$base_tax, $descripcion, $descripcion, $currency, $order->get_id(), $basedCountry, $external_type, $redirect_url,$confirm_url,
                     $email_billing,$name_billing,$address_billing,$epayco_gateway_lang,$phone_billing);
                 
             }
