@@ -22,7 +22,7 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
         $this->epayco_gateway_lang = $this->get_option('epayco_gateway_lang');
         $this->epayco_gateway_type_checkout = $this->get_option('epayco_gateway_type_checkout');
         $this->epayco_gateway_endorder_state=$this->get_option('epayco_gateway_endorder_state');
-        update_option('epaycor_gateway_order_status', $this->get_option('epayco_gateway_testmode'));
+ 
         // Saving hook
         add_action('woocommerce_update_options_payment_gateways_' . $this->id, [$this, 'process_admin_options']);
         // Payment listener/API hook
