@@ -741,7 +741,9 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                                         $messageClass = 'woocommerce-error';
                                         $order->update_status('epayco_failed');
                                         $order->add_order_note($message);
-                                        $this->restore_order_stock($order->id);
+                                        if($current_state !="epayco-cancelled"){
+                                            $this->restore_order_stock($order->id);
+                                        }
                                     }
                                 }else{
                                     
@@ -782,7 +784,9 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                                         $messageClass = 'woocommerce-error';
                                         $order->update_status('epayco_cancelled');
                                         $order->add_order_note($message);
-                                        $this->restore_order_stock($order->id);
+                                        if($current_state !="epayco-cancelled"){
+                                            $this->restore_order_stock($order->id);
+                                        }
                                     }
                                 }else{
                                     
