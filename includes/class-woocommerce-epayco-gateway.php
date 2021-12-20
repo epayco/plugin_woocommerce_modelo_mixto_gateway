@@ -875,35 +875,60 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
 
                 } else{
                         
-                        if($isTestMode == "true"){
-                            if($current_state =="epayco_failed" ||
-                                $current_state =="epayco_cancelled" ||
-                                $current_state =="epayco-cancelled" ||
-                                $current_state =="failed" ||
-                                $current_state == "epayco_processing" ||
-                                $current_state == "epayco_completed" ||
-                                $current_state == "processing_test" ||
-                                $current_state == "completed_test"
-                            ){}else{
-                                
-                                $order->update_status('epayco_failed');
-                                $order->add_order_note('Pago fallido o abandonado');
-                                $this->restore_order_stock($order->id);
+                    if($isTestMode == "true"){
+                        if($current_state =="epayco_failed" ||
+                            $current_state =="epayco_cancelled" ||
+                            $current_state =="epayco-cancelled" ||
+                            $current_state =="failed" ||
+                            $current_state == "epayco_processing" ||
+                            $current_state == "epayco_completed" ||
+                            $current_state == "processing_test" ||
+                            $current_state == "completed_test"
+                        ){}else{
+                            if($x_cod_transaction_state == 1){
+                            $message = 'Pago exitoso Prueba';
+                            switch ($this->epayco_gateway_endorder_state ){
+                                    case 'epayco-processing':{
+                                        $orderStatus ='epayco_processing';
+                                    }break;
+                                    case 'epayco-completed':{
+                                        $orderStatus ='epayco_completed';
+                                    }break;
+                                    case 'processing':{
+                                        $orderStatus ='processing_test';
+                                    }break;
+                                    case 'completed':{
+                                        $orderStatus ='completed_test';
+                                    }break;
+                                }
+                                 $order->update_status($orderStatus);
+                            $order->add_order_note($message);
+                            $this->restore_order_stock($order->id);
+                            }else{
+                           $order->update_status('epayco_failed');
+                            $order->add_order_note('Pago fallido o abandonado');
+                            $this->restore_order_stock($order->id);
                             }
-                        }else{
-                           if($current_state =="epayco-failed" ||
-                                $current_state =="epayco-cancelled" ||
-                                $current_state =="failed" ||
-                                $current_state == "epayco-processing" ||
-                                $current_state == "epayco-completed" ||
-                                $current_state == "processing" ||
-                                $current_state == "completed"
-                            ){}else{
-                                $order->update_status('epayco-failed');
-                                $order->add_order_note('Pago fallido o abandonado');
-                                $this->restore_order_stock($order->id);
-                            } 
                         }
+                    }else{
+                       if($current_state =="epayco-failed" ||
+                            $current_state =="epayco-cancelled" ||
+                            $current_state =="failed" ||
+                            $current_state == "epayco-processing" ||
+                            $current_state == "epayco-completed" ||
+                            $current_state == "processing" ||
+                            $current_state == "completed"
+                        ){}else{
+                            if($x_cod_transaction_state == 1){
+                            $message = 'Pago exitoso';
+                            $orderStatus = $this->epayco_gateway_endorder_state;
+                            }else{ 
+                            $order->update_status('epayco-failed');
+                            $order->add_order_note('Pago fallido o abandonado');
+                            $this->restore_order_stock($order->id);
+                            } 
+                        } 
+                    }
                         
                     }      
             
