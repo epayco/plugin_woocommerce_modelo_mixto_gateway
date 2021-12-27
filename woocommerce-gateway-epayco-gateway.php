@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name: Epayco Payment Gateway
- * Description: Epayco payment Gateway for WooCommerce
+ * Description: Epayco payment Gateway for WooCommerce multi site
  * Version: 5.x
- * Author: Epayco
- * Author URI: http://epayco.co
+ * Author: ePayco
+ * Author URI: https://epayco.com/
  * License: LGPL 3.0
  * Text Domain: epayco
  * Domain Path: /lang
