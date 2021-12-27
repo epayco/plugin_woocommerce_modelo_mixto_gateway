@@ -3,8 +3,8 @@
 **Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
 
 ## Versiones
-* [ePayco plugin WooCommerce v4.x](https://github.com/epayco/woocommerce_multi_cliente).
-
+* [ePayco plugin WooCommerce v4.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway).
+* [ePayco plugin WooCommerce v5.0.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway/releases/tag/v5.0.0).
 
 ## Tabla de contenido
 
@@ -15,14 +15,14 @@
 
 ## Requisitos
 
-* Tener una cuenta activa en [ePayco](https://pagaycobra.com).
+* Tener una cuenta activa en [ePayco](https://epayco.com/).
 * Tener instalado WordPress y WooCommerce multi sitio.
 * Acceso a las carpetas donde se encuetra instalado WordPress y WooCommerce multi sitio.
 * Acceso al admin de WordPress.
 
 ## Instalación
 
-1. [Descarga el plugin.](https://github.com/epayco/woocommerce_multi_cliente)
+1. [Descarga el plugin.](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway)
 2. Ingresa al administrador de tu wordPress.
 3. Ingresa a Administrador de la red / Plugins / Añadir-Nuevo / Subir-Plugin. 
 4. Busca el plugin descargado en tu equipo y súbelo como cualquier otro archivo.
