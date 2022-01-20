@@ -3,7 +3,9 @@
 **Si usted tiene alguna pregunta o problema, no dude en ponerse en contacto con nuestro soporte técnico: desarrollo@payco.co.**
 
 ## Versiones
-* [ePayco plugin WooCommerce](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway).
+
+* [ePayco plugin WooCommerce v4.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway).
+* [ePayco plugin WooCommerce v5.0.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway/releases/tag/v5.0.0).
 
 
 ## Tabla de contenido
