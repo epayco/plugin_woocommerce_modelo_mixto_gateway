@@ -270,11 +270,46 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                 global $woocommerce;
                 $order = new WC_Order($order_id);
                 $descripcionParts = array();
-                foreach ($order->get_items() as $product) {
-                    $descripcionParts[] = $this->string_sanitize($product['name']);
+                $receiversData = [];
+                $isProductoWhitSplit=false;
+                $totalSplitAmount=0;
+                $tax=$order->get_total_tax();
+                $iva=0;
+                $ico=0;
+                $base_tax=$order->get_subtotal()-$order->get_total_discount();
+                foreach($order->get_items('tax') as $item_id => $item ) {
+                    if( strtolower( $item->get_label() ) == 'iva' ){
+                        $iva += round($item->get_tax_total(),2);
+                    }
+                    if( strtolower( $item->get_label() ) == 'ico'){
+                        $ico += round($item->get_tax_total(),2);
+                    }
                 }
+                if($ico ==0 && $iva==0){
+                    $iva = round($order->get_total_tax(),2);
+                }
+                if($ico == 0 && $iva !=0){
+                    $iva = round($order->get_total_tax(),2);
+                }
+                if($ico != 0 && $iva ==0){
+                    $ico = round($order->get_total_tax(),2);
+                }
+                foreach( $order->get_items( 'shipping' ) as $item_id => $item ){
+                    $item_data = $item->get_data();
+                    $shipping_data_total = $item_data['total'];
+                    $shipping_data_taxes        = $item_data['taxes'];
+
+                }
+                $post_metas = get_post_meta(get_the_ID());
+                foreach ($order->get_items() as $product) {
+                    $clearData = str_replace('_', ' ', $this->string_sanitize($product['name']));
+                    $descripcionParts[] = $clearData;
+                }
+                $isSplitProducto = false;
+                $split = 'false';                
                 $descripcion = implode(' - ', $descripcionParts);
                 $currency = strtolower(get_woocommerce_currency());
+                $testMode = $this->epayco_testmode == "yes" ? "true" : "false";
                 $basedCountry = WC()->countries->get_base_country();
                 
                 $redirect_url =get_site_url() . "/";
@@ -285,19 +320,12 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                 $confirm_url = add_query_arg( 'wc-api', get_class( $this ), $confirm_url );
                 $confirm_url = add_query_arg( 'order_id', $order_id, $confirm_url );
                 $confirm_url = $redirect_url.'&confirmation=1';
+                
+                
                 $name_billing=$order->get_billing_first_name().' '.$order->get_billing_last_name();
                 $address_billing=$order->get_billing_address_1();
                 $phone_billing=@$order->billing_phone;
                 $email_billing=@$order->billing_email;
-                $order = new WC_Order($order_id);
-                $tax=$order->get_total_tax();
-                $tax=round($tax,2);
-                if((int)$tax>0){
-                    $base_tax=$order->get_total()-$tax;
-                }else{
-                    $base_tax=$order->get_total();
-                    $tax=0;
-                }
 
                 $external_type = $this->epayco_gateway_type_checkout;
           		$epayco_gateway_lang = $this->epayco_gateway_lang;
@@ -454,8 +482,8 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                         var data = {
                             test: "%s".toString(),
                             amount: "%s".toString(),
-                            tax_base: "%s".toString(),
                             tax: "%s".toString(),
+                            tax_base: "%s".toString(),
                             taxIco: "0",
                             name: "%s",
                             description: "%s",
@@ -473,6 +501,7 @@ class WC_Gateway_Epayco_gateway extends WC_Payment_Gateway
                             autoclick: "true",
                             ip: "%s",
                         }
+                        debugger
                         const privateKey = "%s";
                             var openChekout = function () {
                                   if(localStorage.getItem("invoicePayment") == null){
