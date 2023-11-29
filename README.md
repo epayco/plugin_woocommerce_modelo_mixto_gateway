@@ -6,6 +6,7 @@
 
 * [ePayco plugin WooCommerce v4.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway).
 * [ePayco plugin WooCommerce v5.0.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway/releases/tag/v5.0.0).
+* [ePayco plugin WooCommerce v5.1.x](https://github.com/epayco/plugin_woocommerce_modelo_mixto_gateway/releases/tag/v5.1.0).
 
 
 ## Tabla de contenido
