@@ -2,9 +2,9 @@
 /**
  * WooCommerce Epayco
  *
- * @package WooCommerce Epayco 
+ * @package WooCommerce Epayco
  *
- * Plugin Name: WooCommerce Epayco 
+ * Plugin Name: WooCommerce Epayco
  * Description: Plugin ePayco for WooCommerce.
  * Version: 7.0.0
  * Author: ePayco
