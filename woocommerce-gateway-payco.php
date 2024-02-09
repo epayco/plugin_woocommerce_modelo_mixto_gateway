@@ -6,14 +6,14 @@
  *
  * Plugin Name: WooCommerce Epayco
  * Description: Plugin ePayco for WooCommerce.
- * Version: 7.0.0
+ * Version: 7.1.0
  * Author: ePayco
  * Author URI: http://epayco.co
  * Tested up to: 6.4
  * WC requires at least: 7.4
  * WC tested up to: 8.3
  * Text Domain: woo-epayco-gateway
- * Domain Path: /languages/
+ * Domain Path: /i18n/languages/
  * License: GNU General Public License v3.0
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
@@ -371,5 +371,3 @@ function styling_admin_order_list() {
     <?php
 }
 add_action('admin_head', 'styling_admin_order_list' );
-
-//"http://localhost:81/wordpress/?wc-api=WC_Gateway_EpaycoValidation"
