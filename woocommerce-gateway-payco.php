@@ -6,7 +6,7 @@
  *
  * Plugin Name: WooCommerce Epayco
  * Description: Plugin ePayco for WooCommerce.
- * Version: 7.0.0
+ * Version: 8.0.0
  * Author: ePayco
  * Author URI: http://epayco.co
  * Tested up to: 6.4
