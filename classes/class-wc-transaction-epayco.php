@@ -9,28 +9,33 @@ class Epayco_Transaction_Handler {
         $current_state = $order->get_status();
         $modo = $settings['test_mode'] === "true" ? "pruebas" : "Producción";
 
+        $existingRefPayco = $order->get_meta('refPayco');
+        if (!empty($existingRefPayco) && $existingRefPayco === $data['x_ref_payco']) {
+          
+            return;
+        }
         self::save_epayco_metadata($order, $modo, $data);
 
         $estado_final_exitoso = self::get_success_status($settings);
         $estado_cancelado = self::get_cancel_status($settings);
 
         switch ($data['x_cod_transaction_state']) {
-            case 1: // Aprobada
+            case 1: // Approved
                 self::handle_approved($order, $order_id, $current_state, $settings, $estado_final_exitoso,$data['x_franchise']);
                 echo "1";
                 break;
 
-            case 2: case 4: case 10: case 11: // Cancelada, fallida o rechazada
+            case 2: case 4: case 10: case 11: // Cancelled, failed or rejected
             self::handle_failed($order, $current_state, $estado_cancelado, $data['is_confirmation'],$settings,$data['x_franchise']);
             echo "2";
             break;
 
-            case 3: case 7: // Pendiente
+            case 3: case 7: // Pending
             self::handle_pending($order, $order_id, $current_state, $settings,$data['x_franchise']);
             echo "3";
             break;
 
-            case 6: // Reversado
+            case 6: // Reversed
                 self::handle_reversed($order);
                 echo "6";
                 break;
@@ -74,35 +79,40 @@ class Epayco_Transaction_Handler {
     private static function handle_approved($order, $order_id, $current_state, $settings, $estado_final_exitoso,$franchise) {
         try{
             $logger = new WC_Logger();
-            if ($settings['reduce_stock_pending'] === "yes" && in_array($current_state, ['epayco_failed', 'epayco_cancelled', 'failed', 'canceled','epayco-failed', 'epayco-cancelled'])) {
-                if (!EpaycoOrder::ifStockDiscount($order_id)) {
-                    EpaycoOrder::updateStockDiscount($order_id, 1);
-                    if ( in_array($estado_final_exitoso, ['epayco-processing', 'epayco-completed'])) {
-                        self::restore_stock($order_id, 'decrease');
+            
+          
+            if (in_array($current_state, ['pending'])) {
+                $order->update_status('on-hold');
+                // $order->add_order_note(__('Pago recibido - Esperando confirmación', 'woo-epayco-gateway'));
+                $order->save();
+                if ($settings['reduce_stock_pending'] !== "yes"){
+                   
+                    if (!EpaycoOrder::ifStockDiscount($order_id)) {
+                        EpaycoOrder::updateStockDiscount($order_id, 1);
+                        
                     }
                 }
-            } else {
-                if (!EpaycoOrder::ifStockDiscount($order_id)) {
-                    EpaycoOrder::updateStockDiscount($order_id, 1);
-                }
+                return; 
             }
 
-            if (in_array($current_state, ['pending'])) {
-
-                $order->update_status('on-hold');
-                if ($settings['reduce_stock_pending'] !== "yes"){
-                    self::restore_stock($order_id);
-                }
-            }
-
-            if (!in_array($current_state, ['processing', 'completed', 'processing_test', 'completed_test','epayco-processing', 'epayco-completed','epayco_processing', 'epayco_completed',])) {
-
+         
+            if (!in_array($current_state, ['processing', 'completed', 'processing_test', 'completed_test','epayco-processing', 'epayco-completed','epayco_processing', 'epayco_completed'])) {
+                
+          
                 $order->payment_complete($order->get_meta('refPayco'));
                 $order->update_status($estado_final_exitoso);
-                if ($settings['reduce_stock_pending'] !== "yes"){
-                    self::restore_stock($order_id, 'decrease');
-                }
+                // $order->add_order_note(__('Pago aprobado - Pedido en procesamiento', 'woo-epayco-gateway'));
+                $order->save();
             }
+            
+        
+            if (!EpaycoOrder::ifStockDiscount($order_id)) {
+                EpaycoOrder::updateStockDiscount($order_id, 1);
+                self::restore_stock($order_id, 'decrease');
+                // $order->add_order_note(__('Stock descontado - Pago aprobado', 'woo-epayco-gateway'));
+                $order->save();
+            }
+            
         }catch (\Exception $ex) {
             $error_message = "handle_approved got error: {$ex->getMessage()}";
             $logger->add('handle_approved', $error_message);
@@ -173,14 +183,14 @@ class Epayco_Transaction_Handler {
 
     private static function handle_reversed($order) {
         $order->update_status('refunded');
-        $order->add_order_note('Pago Reversado');
+        $order->add_order_note('Payment Reversed');
         self::restore_stock($order->get_id());
     }
 
     private static function handle_default($order, $current_state) {
         if (!in_array($current_state, ['processing', 'completed'])) {
             $order->update_status('epayco-failed');
-            $order->add_order_note('Pago fallido o abandonado');
+            $order->add_order_note('Payment failed or abandoned');
             self::restore_stock($order->get_id());
         }
     }
