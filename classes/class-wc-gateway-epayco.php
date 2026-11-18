@@ -1258,8 +1258,8 @@ class WC_Gateway_Epayco extends WC_Payment_Gateway
 
             if (is_wp_error($response)) {
                 $error_message = $response->get_error_message();
-                self::$logger->add($this->id, "Error al hacer la llamada a la API de Davipay: " . $error_message);
-                error_log("Error al hacer la llamada a la API de Davipay: " . $error_message);
+                self::$logger->add($this->id, "Error calling the Davipay API: " . $error_message);
+                error_log("Error calling the Davipay API: " . $error_message);
                 return false;
             } else {
                 $response_body = wp_remote_retrieve_body($response);
@@ -1268,8 +1268,8 @@ class WC_Gateway_Epayco extends WC_Payment_Gateway
                     $responseTransaction = json_decode($response_body, true);
                     return $responseTransaction;
                 } else {
-                    self::$logger->add($this->id, "Error en la respuesta de la API de Davipay, código de estado: " . $status_code);
-                    error_log("Error en la respuesta de la API de Davipay, código de estado: " . $status_code);
+                    self::$logger->add($this->id, "Error in the Davipay API response, status code: " . $status_code);
+                    error_log("Error in the Davipay API response, status code: " . $status_code);
                     return false;
                 }
             }
