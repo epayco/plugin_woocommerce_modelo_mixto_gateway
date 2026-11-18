@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Davipay Gateway 7.0.0\n"
+"Project-Id-Version: WooCommerce Davipay Mixed 7.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress."
 "org/support/plugin/Plugin_Davipay_WooCommerce\n"
 "Last-Translator: \n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Loco-Version: 2.6.6; wp-6.4.2"
 
 #. Plugin Name of the plugin
-msgid "WooCommerce Davipay Gateway"
+msgid "WooCommerce Davipay Mixed"
 msgstr ""
 
 #. Description of the plugin

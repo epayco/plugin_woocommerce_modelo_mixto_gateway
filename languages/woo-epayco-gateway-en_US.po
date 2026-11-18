@@ -20,11 +20,11 @@ msgstr ""
 
 #. Plugin Name of the plugin
 msgid "WooCommerce Davipay Mixed"
-msgstr "WooCommerce Davipay Gateway"
+msgstr "WooCommerce Davipay Mixed"
 
 #. Description of the plugin
 msgid "Plugin Davipay for WooCommerce"
-msgstr "Plugin Davipay Gateway for WooCommerce."
+msgstr "Plugin Davipay Mixed for WooCommerce."
 
 #. Author of the plugin
 #: assets/js/frontend/blocks.js:9
