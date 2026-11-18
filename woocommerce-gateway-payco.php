@@ -3,10 +3,10 @@
 /**
  * WooCommerce Davipay
  *
- * @package WooCommerce Davipay mixed
+ * @package WooCommerce Davipay Mixed
  *
- * Plugin Name: WooCommerce Davipay mixed
- * Description: Plugin Davipay for WooCommerce.
+ * Plugin Name: WooCommerce Davipay Mixed
+ * Description: Plugin Davipay for WooCommerce
  * Version: 9.0.0
  * Author: Davipay
  * Author URI: https://www.davipay.com/
