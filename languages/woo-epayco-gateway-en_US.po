@@ -308,18 +308,15 @@ msgstr "Enable sending attributes via response URL"
 msgid "Habilitar el modo redirección con data"
 msgstr "Enable redirection mode with data"
 
-#: classes/class-wc-gateway-epayco.php:329
+#: classes/epayco-settings.php:129
 msgid ""
 "Al habilitar esta opción puede exponer información sensible de sus clientes, "
 "el uso de esta opción es bajo su responsabilidad, conozca esta información "
-"en el siguiente  <a href=\"https://docs.epayco.co/payments/checkout#scroll-"
-"response-p\" target=\"_blank\">link.</a>"
+"en el siguiente  <a href=\"https://docs.davipay.com/docs/checkout-respuesta-y-confirmacion#página-de-respuesta-response\" target=\"_blank\">link.</a>"
 msgstr ""
 "Enabling this option may expose sensitive information about your customers. "
 "Use of this option is at your own responsibility. Learn more at the "
-"following <a href=\"https://docs.epayco.co/payments/checkout#scroll-"
-"response-p\" target=\"_blank\">link.</a>"
-
+"following <a href=\"https://docs.davipay.com/docs/checkout-respuesta-y-confirmacion#página-de-respuesta-response\" target=\"_blank\">link.</a>"
 #: classes/epayco-settings.php:134
 msgid "Rastreo de orden "
 msgstr "Order tracking "

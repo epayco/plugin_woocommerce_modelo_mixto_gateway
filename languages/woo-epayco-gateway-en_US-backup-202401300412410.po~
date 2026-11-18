@@ -36,7 +36,7 @@ msgid "https://www.davipay.com/"
 msgstr ""
 
 #: classes/class-wc-gateway-epayco.php:26
-msgid "Davipay Checkout Gateway"
+msgid "Davipay Checkout"
 msgstr ""
 
 #: classes/class-wc-gateway-epayco.php:27
