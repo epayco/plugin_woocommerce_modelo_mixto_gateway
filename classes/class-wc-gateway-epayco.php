@@ -161,22 +161,22 @@ class WC_Gateway_Epayco extends WC_Payment_Gateway
             <div class="panel panel-default" style="">
                 <img src="<?php echo esc_url((defined('DAVIPAY_ROUTE_IMAGES_S3') && trim(DAVIPAY_ROUTE_IMAGES_S3) !== '') ? DAVIPAY_ROUTE_IMAGES_S3 . 'Imagotipo/checkoutSmallWhite_01_v1.svg' : CMS_ROUTE_IMAGES_S3 . 'checkoutSmallWhite_01_v1.svg'); ?>">
                 <div id="path_upload" hidden>
-                    <?php esc_html_e($logo_url, 'text_domain'); ?>
+                    <?php echo esc_url($logo_url); ?>
                 </div>
                 <div id="path_images" hidden>
                     <?php echo EPAYCO_PLUGIN_URL . 'assets/images' ?>
                 </div>
                 <div id="path_validate" hidden>
-                    <?php esc_html_e($validation_url, 'text_domain'); ?>
+                    <?php echo esc_url($validation_url); ?>
                 </div>
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="fa fa-pencil"></i><?php esc_html_e('Configuración Davipay', 'woo-epayco-gateway'); ?></h3>
                 </div>
             </div>
             <div style="color: #31708f; background-color: #d9edf7; border-color: #bce8f1;padding: 10px;border-radius: 5px;">
-                <?php esc_html_e('Este módulo le permite aceptar pagos seguros por la plataforma de pagos Davipay.Si el cliente decide pagar por Davipay, el estado del pedido cambiará a ', 'woo-epayco-gateway'); ?><b>
+                <?php esc_html_e('Este módulo le permite aceptar pagos seguros por la plataforma de pagos Davipay. Si el cliente decide pagar por Davipay, el estado del pedido cambiará a ', 'woo-epayco-gateway'); ?><b>
                     <?php esc_html_e(' Esperando Pago', 'woo-epayco-gateway'); ?></b>.
-                <br><?php esc_html_e('Cuando el pago sea Aceptado o Rechazado Davipay envía una confirmación a la tienda para cambiar el estado del pedido.', 'woo-epayco-gateway'); ?>
+                <br><?php esc_html_e('Cuando el pago sea Aceptado o Rechazado, Davipay envía una confirmación a la tienda para cambiar el estado del pedido.', 'woo-epayco-gateway'); ?>
             </div>
 
             <?php if ($this->is_valid_for_use()) : ?>
@@ -443,7 +443,7 @@ class WC_Gateway_Epayco extends WC_Payment_Gateway
                 }
 
 
-                $processReturnFailMessage = trim($errorMessage ?: $messageError ?: 'Ocurrió un error de pago.');
+                $processReturnFailMessage = trim($errorMessage ?: $messageError ?: __('Ocurrió un error de pago.', 'woo-epayco-gateway'));
 
                 $processReturnFailMessage = nl2br(htmlspecialchars($processReturnFailMessage, ENT_QUOTES, 'UTF-8'));
                 echo sprintf(

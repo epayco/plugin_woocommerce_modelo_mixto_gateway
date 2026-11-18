@@ -1,8 +1,8 @@
-# Copyright (C) 2024 Davipay
+# Copyright (C) 2026 Davipay
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Davipay Gateway 8.4.8\n"
+"Project-Id-Version: WooCommerce Davipay Mixed 9.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress."
 "org/support/plugin/Plugin_davipay_WooCommerce\n"
 "Last-Translator: \n"
@@ -10,8 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-01-29T22:36:59-05:00\n"
-"PO-Revision-Date: 2026-11-06 22:25+0000\n"
+"POT-Creation-Date: 2026-11-18 07:23+0000\n"
+"PO-Revision-Date: 2026-11-18 07:23+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: woo-epayco-gateway\n"
 "Language: en_US\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Loco-Version: 2.6.6; wp-6.4.2"
 
 #. Plugin Name of the plugin
-msgid "WooCommerce Davipay Gateway"
+msgid "WooCommerce Davipay Mixed"
 msgstr "WooCommerce Davipay Gateway"
 
 #. Description of the plugin
-msgid "Plugin Davipay Gateway for WooCommerce."
+msgid "Plugin Davipay for WooCommerce"
 msgstr "Plugin Davipay Gateway for WooCommerce."
 
 #. Author of the plugin
@@ -36,8 +36,8 @@ msgid "https://www.davipay.com/"
 msgstr "https://www.davipay.com/"
 
 #: classes/class-wc-gateway-epayco.php:26
-msgid "Davipay Checkout Gateway"
-msgstr "Davipay Checkout Gateway"
+msgid "Davipay Checkout"
+msgstr "Davipay Checkout"
 
 #: classes/class-wc-gateway-epayco.php:27
 msgid "Acepta tarjetas de credito, depositos y transferencias."
@@ -353,3 +353,163 @@ msgstr "Invalid request for the Davipay callback."
 #: classes/class-wc-gateway-epayco.php:628
 msgid "No se recibieron datos válidos para el callback de Davipay."
 msgstr "No valid data was received for the Davipay callback."
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Fallido Prueba"
+msgstr "Davipay Test Payment Failed"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Cancelado Prueba"
+msgstr "Davipay Test Payment Canceled"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Pendiente"
+msgstr "Davipay Payment Pending"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Pendiente Prueba"
+msgstr "Davipay Test Payment Pending"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Procesando Pago Prueba"
+msgstr "Davipay Test Processing Payment"
+
+#: woocommerce-gateway-payco.php
+msgid "Procesando Prueba"
+msgstr "Processing Test"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Completado Prueba"
+msgstr "Davipay Test Payment Completed"
+
+#: woocommerce-gateway-payco.php
+msgid "Completado Prueba"
+msgstr "Completed Test"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Procesando"
+msgstr "Davipay Processing Payment"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Procesando Prueba"
+msgstr "Davipay Test Processing Payment"
+
+#: woocommerce-gateway-payco.php
+msgid "Detalle de la transacción"
+msgstr "Transaction Details"
+
+#: woocommerce-gateway-payco.php
+msgid "Pago con Davipay"
+msgstr "Payment with Davipay"
+
+#: woocommerce-gateway-payco.php
+msgid "Modo"
+msgstr "Mode"
+
+#: woocommerce-gateway-payco.php
+msgid "Fecha y hora transacción"
+msgstr "Transaction date and time"
+
+#: woocommerce-gateway-payco.php
+msgid "Franquicia/Medio de pago"
+msgstr "Card brand/Payment method"
+
+#: woocommerce-gateway-payco.php
+msgid "Código de autorización"
+msgstr "Authorization code"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Fallido <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Fallido <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Payment Failed <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Payment Failed <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Fallido Prueba <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Fallido Prueba <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Test Payment Failed <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Test Payment Failed <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Cancelado <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Cancelado <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Payment Canceled <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Payment Canceled <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Cancelado Prueba <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Cancelado Prueba <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Test Payment Canceled <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Test Payment Canceled <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Pendiente <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Pendiente <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Payment Pending <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Payment Pending <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Pendiente Prueba <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Pendiente Prueba <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Test Payment Pending <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Test Payment Pending <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Procesando Pago <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Procesando Pago <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Processing Payment <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Processing Payment <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Procesando Pago Prueba<span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Procesando Pago Prueba<span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Test Processing Payment<span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Test Processing Payment<span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Procesando<span class=\"count\">(%s)</span>"
+msgid_plural "Procesando<span class=\"count\">(%s)</span>"
+msgstr[0] "Processing<span class=\"count\">(%s)</span>"
+msgstr[1] "Processing<span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Procesando Prueba<span class=\"count\">(%s)</span>"
+msgid_plural "Procesando Prueba<span class=\"count\">(%s)</span>"
+msgstr[0] "Processing Test<span class=\"count\">(%s)</span>"
+msgstr[1] "Processing Test<span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Completado <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Completado <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Payment Completed <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Payment Completed <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Davipay Pago Completado Prueba <span class=\"count\">(%s)</span>"
+msgid_plural "Davipay Pago Completado Prueba <span class=\"count\">(%s)</span>"
+msgstr[0] "Davipay Test Payment Completed <span class=\"count\">(%s)</span>"
+msgstr[1] "Davipay Test Payment Completed <span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Completado<span class=\"count\">(%s)</span>"
+msgid_plural "Completado<span class=\"count\">(%s)</span>"
+msgstr[0] "Completed<span class=\"count\">(%s)</span>"
+msgstr[1] "Completed<span class=\"count\">(%s)</span>"
+
+#: woocommerce-gateway-payco.php
+msgid "Completado Prueba<span class=\"count\">(%s)</span>"
+msgid_plural "Completado Prueba<span class=\"count\">(%s)</span>"
+msgstr[0] "Completed Test<span class=\"count\">(%s)</span>"
+msgstr[1] "Completed Test<span class=\"count\">(%s)</span>"
+
+#: classes/class-wc-gateway-epayco.php
+msgid "Ocurrió un error de pago."
+msgstr "A payment error occurred."
+
+#: woocommerce-gateway-payco.php
+msgid "pruebas"
+msgstr "Test"
+
+#: woocommerce-gateway-payco.php
+msgid "Producción"
+msgstr "Production"
