@@ -1,37 +1,40 @@
-(function($) {
-    $(document).ready(function() {
-       console.log("epayco admin.")
+(function ($) {
+    $(document).ready(function () {
+        console.log("Davipay admin.")
         var modal = document.getElementById("myModal");
         var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
+        // Idioma del admin de WordPress (ej: "en-US", "es-CO")
+        var lang = (document.documentElement.lang || "es").toLowerCase();
+        var isSpanish = lang.indexOf("es") === 0;
+        span.onclick = function () {
             modal.style.display = "none";
         }
-        $(".validar").on("click", function() {
+        $(".validar").on("click", function () {
             var modal = document.getElementById("myModal");
             var url_validate = $("#path_validate")[0].innerHTML.trim();
-            const epayco_publickey = $("input:text[name=woocommerce_epayco_epayco_publickey]").val().replace(/\s/g,"");
-            const epayco_privatey = $("input:text[name=woocommerce_epayco_epayco_privatekey]").val().replace(/\s/g,"");
+            const epayco_publickey = $("input:text[name=woocommerce_epayco_epayco_publickey]").val().replace(/\s/g, "");
+            const epayco_privatey = $("input:text[name=woocommerce_epayco_epayco_privatekey]").val().replace(/\s/g, "");
             if (epayco_publickey !== "" &&
                 epayco_privatey !== "") {
                 var formData = new FormData();
-                formData.append("epayco_publickey",epayco_publickey.replace(/\s/g,""));
-                formData.append("epayco_privatey",epayco_privatey.replace(/\s/g,""));
+                formData.append("epayco_publickey", epayco_publickey.replace(/\s/g, ""));
+                formData.append("epayco_privatey", epayco_privatey.replace(/\s/g, ""));
                 $.ajax({
                     url: url_validate,
                     type: "post",
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function(response) {
+                    success: function (response) {
                         debugger
                         if (response == "success") {
-                            alert("validacion exitosa!");
+                           alert(isSpanish ? "¡Validación exitosa!" : "Validation successful!")
                         } else {
                             modal.style.display = "block";
                         }
                     }
                 });
-            }else{
+            } else {
                 modal.style.display = "block";
             }
         });
