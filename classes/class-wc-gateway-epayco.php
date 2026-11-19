@@ -643,7 +643,12 @@ class WC_Gateway_Epayco extends WC_Payment_Gateway
                 $order_id_explode = explode('=', $order_id_info);
                 $order_id_rpl = str_replace('?ref_payco', '', $order_id_explode);
                 $order_id = $order_id_rpl[0];
-                $order = new WC_Order($order_id);
+                $order = $order_id ? wc_get_order($order_id) : false;
+                if (!$order) {
+                    status_header(400);
+                    echo 'invalid';
+                    exit();
+                }
                 $isConfirmation = sanitize_text_field($_GET['confirmation']) == 1;
                 if ($isConfirmation) {
                     $x_signature = sanitize_text_field($_REQUEST['x_signature']);
@@ -701,6 +706,12 @@ class WC_Gateway_Epayco extends WC_Payment_Gateway
                     }
 
                     if (!$jsonData) {
+                        wp_safe_redirect(wc_get_checkout_url());
+                        exit();
+                    }
+                    $redirectApiflow = $this->getTransactionFromApiflow($ref_payco);
+                    if (!$redirectApiflow || (string) $redirectApiflow['x_id_invoice'] !== (string) $order_id) {
+                        self::$logger->add($this->id, 'Davipay redirect rejected: transaction is not bound to order ' . $order_id);
                         wp_safe_redirect(wc_get_checkout_url());
                         exit();
                     }
