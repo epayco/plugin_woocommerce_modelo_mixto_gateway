@@ -7,7 +7,7 @@
  *
  * Plugin Name: WooCommerce Davipay Mixed
  * Description: Plugin Davipay for WooCommerce
- * Version: 9.0.0
+ * Version: 9.0.1
  * Author: Davipay
  * Author URI: https://www.davipay.com/
  * Tested up to: 6.7
@@ -19,7 +19,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  */
 
-define('EPAYCO_WOOCOMMERCE_VERSION', '9.0.0');
+define('EPAYCO_WOOCOMMERCE_VERSION', '9.0.1');
 define('EPAYCO_PLUGIN_URL', plugin_dir_url(__FILE__));
 if (! defined('EPAYCO_PLUGIN_PATH')) {
     define('EPAYCO_PLUGIN_PATH', plugin_dir_path(__FILE__));
@@ -139,6 +139,20 @@ function epayco_update_db_check()
     EpaycoOrder::setup();
 }
 add_action('plugins_loaded', 'epayco_update_db_check');
+add_filter('woocommerce_can_reduce_order_stock', function ($can_reduce, $order) {
+    if (!$order instanceof WC_Order || $order->get_payment_method() !== 'epayco') {
+        return $can_reduce;
+    }
+
+    $settings       = get_option('woocommerce_epayco_settings', array());
+    $reduce_pending = ($settings['epayco_reduce_stock_pending'] ?? null) === 'yes';
+
+    if (!$reduce_pending && in_array($order->get_status(), array('pending', 'on-hold'), true)) {
+        return false;
+    }
+
+    return $can_reduce;
+}, 10, 2);
 function register_epayco_order_status()
 {
     register_post_status('wc-epayco-failed', array(

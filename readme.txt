@@ -4,7 +4,7 @@ Donate link: https://www.davipay.com/
 Tags: e-commerce, commerce, wordpress ecommerce, store, sales, sell, shop, shopping, cart, checkout, configurable, davipay
 Requires at least: 7.4
 Tested up to: 6.8.3
-Stable tag: 9.0.0
+Stable tag: 9.0.1
 Requires PHP: 7.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -44,6 +44,12 @@ Yes. But it is advisable that you consider using it since it is revealing for br
 1. The front-end view
 
 == Changelog ==
+
+= 9.0.1 =
+* SDK-1397: un reintento de pago que pasa a Aceptado después de rechazos descuenta el stock una sola vez (reducción nativa de WooCommerce, idempotente).
+* Un rechazo posterior restaura el stock solo si estaba descontado; los rechazos sucesivos no alteran el inventario.
+* Un webhook tardío de rechazo ya no cancela un pedido ya pagado.
+* El filtro de stock lee la opción de reducir en pendiente igual que la gateway.
 
 = 6.7.0 =
 * Initial stable release
