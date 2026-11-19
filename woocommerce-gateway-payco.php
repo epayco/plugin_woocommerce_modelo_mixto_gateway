@@ -535,7 +535,7 @@ function payco_shop_order($postOrOrderObject)
         }
         if ($orderStatus == 'pending' || $orderStatus == 'on-hold') {
             $epayco = new WC_Gateway_Epayco();
-            $token = $epayco->epyacoBerarToken();
+            $token = $epayco->getApifyToken();
             if ($token && !isset($token['error'])) {
                 $path = "payment/transaction";
                 $data = ["referencePayco" => $paymentsIds[0]];

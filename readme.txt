@@ -50,6 +50,10 @@ Yes. But it is advisable that you consider using it since it is revealing for br
 * Un rechazo posterior restaura el stock solo si estaba descontado; los rechazos sucesivos no alteran el inventario.
 * Un webhook tardío de rechazo ya no cancela un pedido ya pagado.
 * El filtro de stock lee la opción de reducir en pendiente igual que la gateway.
+* SDK-1420: la confirmación de pago se verifica contra apiflow con token Bearer; el estado, monto, moneda y referencia se toman de ePayco y no de la petición.
+* La orden debe coincidir con la factura de ePayco y cada ref_payco solo puede aplicarse a una orden.
+* El token de apify se reutiliza desde un caché de WordPress (10 min) en lugar de cookies del navegador.
+* La sincronización de pendientes procesa lotes de 20 órdenes, de la más antigua a la más reciente.
 
 = 6.7.0 =
 * Initial stable release
